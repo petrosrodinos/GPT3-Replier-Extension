@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.0",
+  "short_name": "React App",
+  "name": "Create React App Sample",
+  "action": {
+    "default_title": "Auto review replies",
+    "default_popup": "index.html"
+  },
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "events.js"
+  },
+  "icons": {
+    "16": "favicon.ico",
+    "48": "favicon.ico",
+    "128": "favicon.ico"
+  },
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
