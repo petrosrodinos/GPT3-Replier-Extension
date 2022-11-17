@@ -14,8 +14,10 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     removeUser();
+    return;
   } else {
     addNewUser(user);
+    return;
   }
 });
 

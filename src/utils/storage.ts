@@ -1,6 +1,7 @@
 import { User } from "../types/user";
 import { login, logout } from "../redux/actions/auth/authSlice";
 import store from "../redux/store";
+import { logoutUser } from "../services/auth";
 
 export const saveUser = async (user: User) => {
   // chrome.storage.local.set({ user: value }, () => {});
@@ -24,3 +25,11 @@ export const removeUser = () => {
   store.dispatch(logout());
   localStorage.removeItem("user");
 };
+
+window.addEventListener("storage", () => {
+  const user = getUser();
+  if (!user) {
+    store.dispatch(logout());
+    logoutUser();
+  }
+});

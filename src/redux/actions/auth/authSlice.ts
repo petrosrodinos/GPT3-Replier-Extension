@@ -33,7 +33,7 @@ export const authSlice = createSlice({
       state.email = "";
       state.photoURL = "";
       state.uid = "";
-      state.requests = FREE_REQUESTS;
+      state.requests = 0;
     },
   },
   extraReducers: (builder) => {},

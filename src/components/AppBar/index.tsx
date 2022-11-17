@@ -6,7 +6,6 @@ import {
   Stack,
   Collapse,
   Icon,
-  Link,
   Popover,
   PopoverTrigger,
   useColorModeValue,
@@ -19,7 +18,6 @@ import { FiPower } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../services/auth";
 import { useAppDispatch, useAppSelector } from "../../types/store";
-import { logout } from "../../redux/actions/auth/authSlice";
 import { NAV_ITEMS, NavItem } from "./Links";
 import { Link as RouterLink } from "react-router-dom";
 

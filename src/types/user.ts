@@ -5,7 +5,7 @@ export interface User {
   photoURL: string;
   requests: number;
   isLoggedIn?: boolean;
-  preferences?: Preferances;
+  preferences?: Preferances | {};
 }
 
 export interface Preferances {
