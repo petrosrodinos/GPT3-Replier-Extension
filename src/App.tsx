@@ -6,8 +6,10 @@ import Container from "./components/Container";
 import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
 import ContactForm from "./pages/Contact";
+import { useAppSelector } from "./types/store";
 
 function App() {
+  const { isLoggedIn } = useAppSelector((state) => state.auth);
   return (
     <>
       <Container>
@@ -18,7 +20,7 @@ function App() {
               <Route index path="home" element={<Home />} />
               <Route path="login" element={<Auth />} />
               <Route path="contact" element={<ContactForm />} />
-              <Route path="dashboard" element={<Dashboard />} />
+              {isLoggedIn && <Route path="dashboard" element={<Dashboard />} />}
               <Route path="pricing" element={<Pricing />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Route>
