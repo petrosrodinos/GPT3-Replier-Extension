@@ -2,11 +2,8 @@ import { useEffect, useState } from "react";
 import { getReplies } from "../../../services/reviews";
 import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
-import { Card, CardBody } from "@chakra-ui/card";
+import ReplyCard from "../../ReplyCard";
 import "./style.css";
-import { Icon, Text } from "@chakra-ui/react";
-import { MdContentCopy } from "react-icons/md";
-import { Tooltip } from "@chakra-ui/react";
 
 const SavedReviews = () => {
   const { uid } = useAppSelector((state) => state.auth);
@@ -21,24 +18,10 @@ const SavedReviews = () => {
     setReplies(replies);
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-  };
-
   return (
     <div>
-      {replies?.map((reply: any, index) => (
-        <Tooltip label="Copy to Clipboard">
-          <Card
-            onClick={() => copyToClipboard(reply.review)}
-            className="card-container"
-            key={index}
-          >
-            <CardBody>
-              <Text>{reply.review}</Text>
-            </CardBody>
-          </Card>
-        </Tooltip>
+      {replies?.map((reply: Reply, index) => (
+        <ReplyCard reply={reply} index={index} key={index} />
       ))}
     </div>
   );
