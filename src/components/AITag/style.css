@@ -1,0 +1,10 @@
+.tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag:hover {
+  background-color: pink;
+  cursor: pointer;
+}
