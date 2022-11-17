@@ -17,3 +17,24 @@ export const stripeConfig = {
   publishableKey: process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY,
   secretKey: process.env.REACT_APP_STRIPE_SECRET_KEY,
 };
+
+export const REPLY_TAGS = [
+  "proffesionnal",
+  "unprofessional",
+  "funny",
+  "sad",
+  "happy",
+  "angry",
+  "sarcastic",
+  "serious",
+  "informative",
+  "informal",
+  "formal",
+  "friendly",
+  "unfriendly",
+  "polite",
+  "impolite",
+  "negative",
+  "positive",
+  "neutral",
+];
