@@ -13,8 +13,8 @@ function App() {
           <AppBar />
           <Routes>
             <Route path="/*">
-              <Route index element={<Auth />} />
-              <Route path="home" element={<Home />} />
+              <Route index path="home" element={<Home />} />
+              <Route path="login" element={<Auth />} />
               <Route path="settings" element={<Settings />} />
               <Route path="pricing" element={<Pricing />} />
             </Route>

@@ -15,16 +15,17 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FiPower } from "react-icons/fi";
+import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../services/auth";
-import { useAppDispatch, useAppSelector } from "../../types/store";
+import { useAppSelector } from "../../types/store";
 import { NAV_ITEMS, NavItem } from "./Links";
 import { Link as RouterLink } from "react-router-dom";
+import { FC } from "react";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
-  const dispatch = useAppDispatch();
   let navigate = useNavigate();
   const { isLoggedIn, displayName, photoURL } = useAppSelector(
     (state) => state.auth
@@ -33,6 +34,10 @@ export default function WithSubnavigation() {
   const handleLogout = async () => {
     logoutUser();
     navigate("/");
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -90,6 +95,16 @@ export default function WithSubnavigation() {
           direction={"row"}
           spacing={6}
         >
+          {!isLoggedIn && (
+            <Icon
+              onClick={handleLogin}
+              display={{ base: "end", md: "end" }}
+              as={BiLogInCircle}
+              w={7}
+              h={7}
+              color="pink.400"
+            />
+          )}
           {isLoggedIn && (
             <Icon
               onClick={handleLogout}
@@ -104,7 +119,7 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav />
+        <MobileNav onToggle={onToggle} />
       </Collapse>
     </Box>
   );
@@ -146,7 +161,7 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav = () => {
+const MobileNav: FC<any> = ({ onToggle }) => {
   const { isLoggedIn } = useAppSelector((state) => state.auth);
   return (
     <Stack
@@ -158,19 +173,20 @@ const MobileNav = () => {
         return navItem.protected && !isLoggedIn ? (
           <></>
         ) : (
-          <MobileNavItem key={navItem.label} {...navItem} />
+          <MobileNavItem onToggle={onToggle} key={navItem.label} {...navItem} />
         );
       })}
     </Stack>
   );
 };
 
-const MobileNavItem = ({ label, link }: NavItem) => {
-  const { isOpen, onToggle } = useDisclosure();
+const MobileNavItem: FC<any> = ({ label, link, onToggle }) => {
+  const { isOpen } = useDisclosure();
 
   return (
     <Stack spacing={4}>
       <Flex
+        onClick={onToggle}
         py={2}
         justify={"space-between"}
         align={"center"}
