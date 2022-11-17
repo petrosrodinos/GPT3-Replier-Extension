@@ -4,6 +4,16 @@
   justify-content: center;
 }
 
+.selected {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected:hover {
+  cursor: pointer;
+}
+
 .tag:hover {
   background-color: pink;
   cursor: pointer;

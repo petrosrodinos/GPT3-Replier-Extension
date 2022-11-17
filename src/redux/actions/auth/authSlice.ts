@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { User } from "../../../types/user";
-import { FREE_REQUESTS } from "../../../utils/constants";
+import {
+  FREE_REQUESTS,
+  SAVED_REVIEWS,
+  DEFAULT_TAGS,
+} from "../../../utils/constants";
 
 const initialState: User = {
   uid: "",
   displayName: "",
   email: "",
   photoURL: "",
-  requests: FREE_REQUESTS,
   isLoggedIn: false,
-  preferences: {
-    darkMode: false,
+  tags: DEFAULT_TAGS,
+  plan: {
+    requests: FREE_REQUESTS,
+    savedReviews: SAVED_REVIEWS,
   },
 };
 
@@ -24,8 +29,8 @@ export const authSlice = createSlice({
       state.email = action.payload.email;
       state.photoURL = action.payload.photoURL;
       state.isLoggedIn = true;
-      state.preferences = action.payload.preferences;
-      state.requests = action.payload.requests;
+      state.plan = action.payload.plan;
+      state.tags = action.payload.tags;
     },
     logout: (state) => {
       state.isLoggedIn = false;
@@ -33,7 +38,8 @@ export const authSlice = createSlice({
       state.email = "";
       state.photoURL = "";
       state.uid = "";
-      state.requests = 0;
+      state.plan = {};
+      state.tags = DEFAULT_TAGS;
     },
   },
   extraReducers: (builder) => {},

@@ -10,11 +10,11 @@ const AISettings = () => {
   const [error, setError] = useState("");
 
   const onDelete = (tag: string) => {
-    console.log("delete", tag);
+    setTags(tags.filter((t) => t !== tag));
   };
 
   const onAdd = (tag: string) => {
-    console.log("add", tag);
+    setTags([...tags, tag]);
   };
 
   const saveTags = () => {

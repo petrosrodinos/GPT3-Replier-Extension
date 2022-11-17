@@ -18,7 +18,8 @@ const AITag: FC<IProps> = ({ tag, onDelete, onAdd }) => {
     }
   };
 
-  const handleDelete = () => {
+  const handleDelete = (e: any) => {
+    e.stopPropagation();
     onDelete(tag);
     setSelected(false);
   };
@@ -26,7 +27,7 @@ const AITag: FC<IProps> = ({ tag, onDelete, onAdd }) => {
   return (
     <Tag
       onClick={handleClick}
-      className="tag"
+      className={selected ? "selected" : "tag"}
       size="lg"
       borderRadius="full"
       variant={selected ? "solid" : "outline"}

@@ -1,19 +1,23 @@
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { User } from "../types/user";
 import { db } from "../utils/firebase";
-import { FREE_REQUESTS } from "../utils/constants";
+import { FREE_REQUESTS, SAVED_REVIEWS, DEFAULT_TAGS } from "../utils/constants";
 import { saveUser } from "../utils/storage";
 
 export const addNewUser = async (user: any): Promise<User | null> => {
   try {
-    let requests = FREE_REQUESTS;
-    let preferances = {};
+    let tags = DEFAULT_TAGS;
+    let plan = {
+      requests: FREE_REQUESTS,
+      savedReviews: SAVED_REVIEWS,
+    };
     let userToStore: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
-      requests,
+      plan,
+      tags,
     };
     if (isNewUser(user.metadata.creationTime)) {
       await setDoc(doc(db, "users", user.uid), userToStore);
@@ -22,15 +26,15 @@ export const addNewUser = async (user: any): Promise<User | null> => {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        requests = docSnap.data()?.requests;
-        preferances = docSnap.data()?.preferences;
+        plan = docSnap.data()?.plan;
+        tags = docSnap.data()?.tags;
       }
     }
     const finalUser = {
       ...userToStore,
       isLoggedIn: true,
-      requests,
-      preferances,
+      plan,
+      tags,
     };
     saveUser(finalUser);
     return finalUser;

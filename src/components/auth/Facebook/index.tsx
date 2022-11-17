@@ -7,7 +7,7 @@ interface IProps {
 
 const Facebook: FC<IProps> = ({ onClick }) => {
   return (
-    <div className="btn-fb" onClick={onClick}>
+    <div className="btn-fb auth-icon" onClick={onClick}>
       <div className="fb-content">
         <div className="logo">
           <svg

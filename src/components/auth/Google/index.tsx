@@ -8,7 +8,7 @@ interface IProps {
 
 const Google: FC<IProps> = ({ onClick }) => {
   return (
-    <div onClick={onClick} className="btn-google">
+    <div onClick={onClick} className="btn-google auth-icon">
       <div className="google-content">
         <div className="logo">
           <svg

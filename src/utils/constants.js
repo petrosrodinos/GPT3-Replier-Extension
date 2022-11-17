@@ -1,5 +1,8 @@
 export const FREE_REQUESTS =
-  parseInt(process.env.REACT_APP_FREE_REQUESTS) || 10;
+  parseInt(process.env.REACT_APP_FREE_REQUESTS) || 20;
+
+export const SAVED_REVIEWS =
+  parseInt(process.env.REACT_APP_SAVED_REVIEWS) || 20;
 
 export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY || "";
 
@@ -19,8 +22,8 @@ export const stripeConfig = {
 };
 
 export const REPLY_TAGS = [
+  "helpful",
   "proffesionnal",
-  "unprofessional",
   "funny",
   "sad",
   "happy",
@@ -38,3 +41,5 @@ export const REPLY_TAGS = [
   "positive",
   "neutral",
 ];
+
+export const DEFAULT_TAGS = ["polite", "friendly", "helpful"];

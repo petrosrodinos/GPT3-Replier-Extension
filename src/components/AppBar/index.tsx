@@ -22,6 +22,7 @@ import { useAppSelector } from "../../types/store";
 import { NAV_ITEMS, NavItem } from "./Links";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
+import "./style.css";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -97,6 +98,7 @@ export default function WithSubnavigation() {
         >
           {!isLoggedIn && (
             <Icon
+              className="auth-icon"
               onClick={handleLogin}
               display={{ base: "end", md: "end" }}
               as={BiLogInCircle}
@@ -107,6 +109,7 @@ export default function WithSubnavigation() {
           )}
           {isLoggedIn && (
             <Icon
+              className="auth-icon"
               onClick={handleLogout}
               display={{ base: "end", md: "end" }}
               as={FiPower}

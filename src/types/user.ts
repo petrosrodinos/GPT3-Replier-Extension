@@ -3,11 +3,12 @@ export interface User {
   displayName: string;
   email: string;
   photoURL: string;
-  requests: number;
   isLoggedIn?: boolean;
-  preferences?: Preferances | {};
+  tags?: string[];
+  plan?: Plan | {};
 }
 
-export interface Preferances {
-  darkMode: boolean;
+interface Plan {
+  requests: number;
+  savedReviews: number;
 }
