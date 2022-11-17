@@ -41,6 +41,8 @@ const AddReview = () => {
   return (
     <div>
       <Textarea
+        cols={20}
+        rows={5}
         isInvalid={isValid}
         value={review}
         onChange={(e) => setReview(e.target.value)}

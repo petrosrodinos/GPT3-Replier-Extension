@@ -9,8 +9,8 @@ import "./style.css";
 const Dashboard: FC = () => {
   return (
     <div className="dashboard-container">
-      <Tabs className="" variant="soft-rounded" colorScheme="pink">
-        <TabList>
+      <Tabs className="tab-container" variant="soft-rounded" colorScheme="pink">
+        <TabList className="tab-list_container">
           <Tab>Saved Replies</Tab>
           <Tab>Add Reply</Tab>
           <Tab>AI Settings</Tab>

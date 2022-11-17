@@ -1,5 +1,5 @@
 .dashboard-container {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -7,9 +7,15 @@
 }
 
 .tab-container {
-  width: 100% !important;
+  width: 80% !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.tab-list_container {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
 }
