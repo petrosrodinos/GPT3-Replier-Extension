@@ -3,9 +3,10 @@ import AppBar from "./components/AppBar";
 import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Container from "./components/Container";
-import Settings from "./pages/Settings";
+import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
 import ContactForm from "./pages/Contact";
+import SaveReview from "./pages/SaveReview";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
               <Route index path="home" element={<Home />} />
               <Route path="login" element={<Auth />} />
               <Route path="contact" element={<ContactForm />} />
-              <Route path="settings" element={<Settings />} />
+              <Route path="dashboard" element={<Dashboard />} />
               <Route path="pricing" element={<Pricing />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Route>

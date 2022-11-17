@@ -10,8 +10,8 @@ export const NAV_ITEMS: Array<NavItem> = [
     link: "/home",
   },
   {
-    label: "Settings",
-    link: "/settings",
+    label: "Dashboard",
+    link: "/dashboard",
     protected: true,
   },
   {
