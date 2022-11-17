@@ -2181,7 +2181,7 @@
   "resolved" "https://registry.npmjs.org/@firebase/auth-interop-types/-/auth-interop-types-0.1.7.tgz"
   "version" "0.1.7"
 
-"@firebase/auth-types@0.11.1":
+"@firebase/auth-types@^0.11.1", "@firebase/auth-types@0.11.1":
   "integrity" "sha512-ud7T39VG9ptTrC2fOy/XlU+ubC+BVuBJPteuzsPZSa9l7gkntvWgVb3Z/3FxqqRPlkVUYiyvmsbRN3DE1He2ow=="
   "resolved" "https://registry.npmjs.org/@firebase/auth-types/-/auth-types-0.11.1.tgz"
   "version" "0.11.1"

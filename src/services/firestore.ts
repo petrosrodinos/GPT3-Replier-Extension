@@ -7,15 +7,13 @@ import { saveUser } from "../utils/storage";
 export const addNewUser = async (user: any): Promise<User | null> => {
   try {
     let requests = FREE_REQUESTS;
+    let preferances = {};
     let userToStore: User = {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
       photoURL: user.photoURL,
       requests,
-      preferences: {
-        darkMode: false,
-      },
     };
     if (isNewUser(user.metadata.creationTime)) {
       await setDoc(doc(db, "users", user.uid), userToStore);
@@ -25,9 +23,15 @@ export const addNewUser = async (user: any): Promise<User | null> => {
 
       if (docSnap.exists()) {
         requests = docSnap.data()?.requests;
+        preferances = docSnap.data()?.preferences;
       }
     }
-    const finalUser = { ...userToStore, isLoggedIn: true, requests };
+    const finalUser = {
+      ...userToStore,
+      isLoggedIn: true,
+      requests,
+      preferances,
+    };
     saveUser(finalUser);
     return finalUser;
   } catch (e) {

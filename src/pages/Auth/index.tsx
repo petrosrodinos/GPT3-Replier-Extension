@@ -34,7 +34,6 @@ const Auth = () => {
     try {
       const loggedUser = await addNewUser(user);
       if (loggedUser) {
-        dispatch(login(loggedUser));
         navigate("/settings");
       }
     } catch (error) {

@@ -1,8 +1,11 @@
 import { User } from "../types/user";
+import { login, logout } from "../redux/actions/auth/authSlice";
+import store from "../redux/store";
 
-export const saveUser = async (value: User) => {
+export const saveUser = async (user: User) => {
   // chrome.storage.local.set({ user: value }, () => {});
-  localStorage.setItem("user", JSON.stringify(value));
+  store.dispatch(login(user));
+  localStorage.setItem("user", JSON.stringify(user));
 };
 
 export const getUser = (): User | null => {
@@ -18,5 +21,6 @@ export const getUser = (): User | null => {
 
 export const removeUser = () => {
   // chrome.storage.local.remove(["user"], function () {});
+  store.dispatch(logout());
   localStorage.removeItem("user");
 };

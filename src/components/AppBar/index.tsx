@@ -126,7 +126,7 @@ const DesktopNav = () => {
             <Popover trigger={"hover"} placement={"bottom-start"}>
               <PopoverTrigger>
                 <RouterLink to={navItem.link}>
-                  <Link
+                  <Text
                     p={2}
                     fontSize={"sm"}
                     fontWeight={500}
@@ -137,7 +137,7 @@ const DesktopNav = () => {
                     }}
                   >
                     {navItem.label}
-                  </Link>
+                  </Text>
                 </RouterLink>
               </PopoverTrigger>
             </Popover>
@@ -174,7 +174,6 @@ const MobileNavItem = ({ label, link }: NavItem) => {
     <Stack spacing={4}>
       <Flex
         py={2}
-        as={Link}
         justify={"space-between"}
         align={"center"}
         _hover={{

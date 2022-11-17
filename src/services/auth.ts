@@ -6,21 +6,16 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { app } from "../utils/firebase";
-import store from "../redux/store";
-import { login, logout } from "../redux/actions/auth/authSlice";
-import { getUser, removeUser } from "../utils/storage";
+import { removeUser } from "../utils/storage";
+import { addNewUser } from "./firestore";
 
 const auth = getAuth(app);
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    store.dispatch(logout());
     removeUser();
   } else {
-    const user = getUser();
-    if (user) {
-      store.dispatch(login(user));
-    }
+    addNewUser(user);
   }
 });
 
