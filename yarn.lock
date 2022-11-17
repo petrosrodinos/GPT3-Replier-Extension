@@ -1136,6 +1136,13 @@
     "@chakra-ui/react-use-merge-refs" "2.0.4"
     "@chakra-ui/spinner" "2.0.10"
 
+"@chakra-ui/card@^2.1.1":
+  "integrity" "sha512-vvmfuNn6gkfv6bGcXQe6kvWHspziPZgYnnffiEjPaZYtaf98WRszpjyPbFv0oQR/2H1RSE1oaTqa/J1rHrzw3A=="
+  "resolved" "https://registry.npmjs.org/@chakra-ui/card/-/card-2.1.1.tgz"
+  "version" "2.1.1"
+  dependencies:
+    "@chakra-ui/react-context" "2.0.5"
+
 "@chakra-ui/checkbox@2.2.3":
   "integrity" "sha512-ScPIoBbdAbRV+Pdy3B4UqYtf+IxPpm+FHMVPELi2rJUe3k5UcyZcs9DxzKsBS+5e3QBD+H82a6ui0mx9Pyfq1A=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/checkbox/-/checkbox-2.2.3.tgz"
@@ -1458,6 +1465,11 @@
   "integrity" "sha512-eBITFkf7fLSiMZrSdhweK4fYr41WUNMEeIEOP2dCWolE7WgKxNYaYleC+iRGY0GeXkFM2KYywUtixjJe29NuVA=="
   "resolved" "https://registry.npmjs.org/@chakra-ui/react-context/-/react-context-2.0.4.tgz"
   "version" "2.0.4"
+
+"@chakra-ui/react-context@2.0.5":
+  "integrity" "sha512-WYS0VBl5Q3/kNShQ26BP+Q0OGMeTQWco3hSiJWvO2wYLY7N1BLq6dKs8vyKHZfpwKh2YL2bQeAObi+vSkXp6tQ=="
+  "resolved" "https://registry.npmjs.org/@chakra-ui/react-context/-/react-context-2.0.5.tgz"
+  "version" "2.0.5"
 
 "@chakra-ui/react-env@2.0.10":
   "integrity" "sha512-3Yab5EbFcCGYzEsoijy4eA3354Z/JoXyk9chYIuW7Uwd+K6g/R8C0mUSAHeTmfp6Fix9kzDgerO5MWNM87b8cA=="

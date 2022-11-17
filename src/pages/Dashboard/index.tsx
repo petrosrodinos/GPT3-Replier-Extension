@@ -9,7 +9,7 @@ import "./style.css";
 const Dashboard: FC = () => {
   return (
     <div className="dashboard-container">
-      <Tabs variant="soft-rounded" colorScheme="pink">
+      <Tabs className="" variant="soft-rounded" colorScheme="pink">
         <TabList>
           <Tab>Saved Replies</Tab>
           <Tab>Add Reply</Tab>
