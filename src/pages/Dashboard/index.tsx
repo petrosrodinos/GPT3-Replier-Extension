@@ -11,8 +11,8 @@ const Dashboard: FC = () => {
     <div className="dashboard-container">
       <Tabs variant="soft-rounded" colorScheme="pink">
         <TabList>
-          <Tab>Saved Reviews</Tab>
-          <Tab>Add Review</Tab>
+          <Tab>Saved Replies</Tab>
+          <Tab>Add Reply</Tab>
           <Tab>AI Settings</Tab>
           <Tab>Account</Tab>
         </TabList>

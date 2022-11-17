@@ -6,7 +6,6 @@ import Container from "./components/Container";
 import Dashboard from "./pages/Dashboard";
 import Pricing from "./pages/Pricing";
 import ContactForm from "./pages/Contact";
-import SaveReview from "./pages/SaveReview";
 
 function App() {
   return (

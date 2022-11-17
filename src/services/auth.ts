@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { app } from "../utils/firebase";
 import { removeUser } from "../utils/storage";
-import { addNewUser } from "./firestore";
+import { addNewUser } from "./user";
 
 const auth = getAuth(app);
 

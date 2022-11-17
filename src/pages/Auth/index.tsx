@@ -1,7 +1,7 @@
 import { signInWithGoogle, signInWithFacebook } from "../../services/auth";
 import Google from "../../components/auth/Google";
 import Facebook from "../../components/auth/Facebook";
-import { addNewUser } from "../../services/firestore";
+import { addNewUser } from "../../services/user";
 import { useAppDispatch } from "../../types/store";
 import { login } from "../../redux/actions/auth/authSlice";
 import { useNavigate } from "react-router-dom";
