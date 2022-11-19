@@ -1,6 +1,7 @@
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import { FC, useState, useEffect } from "react";
 import { MAX_TAGS } from "../../utils/constants";
+import { useToast } from "@chakra-ui/react";
 import "./style.css";
 
 interface IProps {
@@ -13,17 +14,27 @@ interface IProps {
 
 const AITag: FC<IProps> = ({ tag, tags, length, onDelete, onAdd }) => {
   const [selected, setSelected] = useState(false);
+  const toast = useToast();
 
   useEffect(() => {
-    if (tags.includes(tag)) {
+    if (!tags) return;
+    if (tags?.includes(tag)) {
       setSelected(true);
     }
-  }, []);
+  }, [tags]);
 
   const handleClick = () => {
     if (!selected) {
+      if (length + 1 > MAX_TAGS) {
+        toast({
+          title: "Max 5 tags allowed for better AI accuracy",
+          status: "warning",
+          duration: 5000,
+          isClosable: true,
+        });
+        return;
+      }
       onAdd(tag);
-      if (length + 1 > MAX_TAGS) return;
       setSelected(true);
     }
   };

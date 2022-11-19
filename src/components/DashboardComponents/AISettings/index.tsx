@@ -5,10 +5,13 @@ import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../types/store";
 import { useToast } from "@chakra-ui/react";
 import { addTags } from "../../../services/tags";
+import { updateTags } from "../../../redux/actions/auth/authSlice";
+import { useAppDispatch } from "../../../types/store";
 import "./style.css";
 
 const AISettings = () => {
   const toast = useToast();
+  const dispatch = useAppDispatch();
   const { uid, tags: selectedTags } = useAppSelector((state) => state.auth);
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
@@ -23,24 +26,24 @@ const AISettings = () => {
   };
 
   const onAdd = (tag: string) => {
-    let tagsLength = tags.length + 1;
-    if (tagsLength > MAX_TAGS) {
-      toast({
-        title: "Max 5 tags allowed for better AI accuracy",
-        status: "warning",
-        duration: 5000,
-        isClosable: true,
-      });
-      return;
-    }
     setTags([...tags, tag]);
   };
 
   const saveTags = async () => {
+    if (tags.length === 0) {
+      toast({
+        title: "Please select at least 3 tags",
+        status: "warning",
+        duration: 2000,
+        isClosable: true,
+      });
+      return;
+    }
     setLoading(true);
     const tagsAdded = await addTags({ tags, userId: uid });
     if (tagsAdded) {
       setLoading(false);
+      dispatch(updateTags(tags));
       toast({
         title: "Tags added successfully",
         status: "success",

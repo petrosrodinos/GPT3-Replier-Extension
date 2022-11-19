@@ -44,9 +44,12 @@ export const authSlice = createSlice({
       state.tags = DEFAULT_TAGS;
       state.userEntered = false;
     },
+    updateTags: (state, action) => {
+      state.tags = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, updateTags } = authSlice.actions;
 export default authSlice.reducer;

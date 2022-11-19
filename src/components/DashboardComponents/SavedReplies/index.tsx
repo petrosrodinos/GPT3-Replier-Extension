@@ -16,7 +16,6 @@ const SavedReplies = () => {
 
   const getUserReplies = async () => {
     const replies = await getReplies(uid);
-    console.log(replies);
     setReplies(replies);
   };
 
