@@ -1,17 +1,12 @@
-import AuthHandler from "../../components/auth";
-import { Text } from "@chakra-ui/react";
-import { Card } from "@chakra-ui/card";
+import AuthIndicator from "../../components/auth/AuthIndicator";
 
 const Auth = () => {
   return (
     <>
-      <Card className="playground-card-container">
-        <Text fontWeight="bold" color="pink.400">
-          Sign Up to use AI Generated Replies
-        </Text>
-      </Card>
-      <br />
-      <AuthHandler />
+      <AuthIndicator
+        redirect="home"
+        label="Sign Up to use AI Generated Replies"
+      />
     </>
   );
 };

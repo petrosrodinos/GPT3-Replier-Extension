@@ -1,18 +1,19 @@
-import { Text } from "@chakra-ui/react";
-import { Card } from "@chakra-ui/card";
-import AuthHandler from "../../components/auth";
+import { useAppSelector } from "../../types/store";
+import AuthIndicator from "../../components/auth/AuthIndicator";
 import "./style.css";
 
 const Playground = () => {
+  const { isLoggedIn } = useAppSelector((state) => state.auth);
   return (
     <div>
-      <Card className="playground-card-container">
-        <Text fontWeight="bold" color="pink.400">
-          Sign Up to Use PlayGround
-        </Text>
-      </Card>
-      <br />
-      <AuthHandler />
+      {isLoggedIn ? (
+        <div>grgrg</div>
+      ) : (
+        <AuthIndicator
+          redirect="playground"
+          label="Sign Up to Use PlayGround"
+        />
+      )}
     </div>
   );
 };

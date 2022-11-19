@@ -19,8 +19,8 @@ export const NAV_ITEMS: Array<NavItem> = [
     link: "/plans",
   },
   {
-    label: "Playground",
-    link: "/playGround",
+    label: "PlayGround",
+    link: "/playground",
   },
   {
     label: "About",

@@ -3,8 +3,13 @@ import Google from "./Google";
 import { signInWithGoogle, signInWithFacebook } from "../../services/auth";
 import { addNewUser } from "../../services/user";
 import { useNavigate } from "react-router-dom";
+import { FC } from "react";
 
-const AuthHandler = () => {
+interface IProps {
+  onUserLogin: () => void;
+}
+
+const AuthHandler: FC<IProps> = ({ onUserLogin }) => {
   let navigate = useNavigate();
 
   const handleGoogleSignIn = async () => {
@@ -31,7 +36,7 @@ const AuthHandler = () => {
     try {
       const loggedUser = await addNewUser(user);
       if (loggedUser) {
-        navigate("/settings");
+        onUserLogin();
       }
     } catch (error) {
       console.log(error);
