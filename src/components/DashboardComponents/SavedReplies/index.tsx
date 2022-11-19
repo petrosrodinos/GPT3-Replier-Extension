@@ -6,7 +6,7 @@ import ReplyCard from "../../ReplyCard";
 import "./style.css";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 
-const SavedReviews = () => {
+const SavedReplies = () => {
   const { uid } = useAppSelector((state) => state.auth);
   const [replies, setReplies] = useState<Reply[]>([]);
 
@@ -25,7 +25,7 @@ const SavedReviews = () => {
       {replies.length === 0 && (
         <Alert status="warning">
           <AlertIcon />
-          You have no saved reviews
+          You have no saved replies
         </Alert>
       )}
       {replies?.map((reply: Reply, index) => (
@@ -35,4 +35,4 @@ const SavedReviews = () => {
   );
 };
 
-export default SavedReviews;
+export default SavedReplies;

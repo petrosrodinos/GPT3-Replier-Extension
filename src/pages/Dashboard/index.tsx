@@ -1,9 +1,9 @@
 import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@chakra-ui/react";
 import { FC } from "react";
 import Account from "../../components/DashboardComponents/Account";
-import AddReview from "../../components/DashboardComponents/AddReview";
+import AddReply from "../../components/DashboardComponents/AddReply";
 import AISettings from "../../components/DashboardComponents/AISettings";
-import SavedReviews from "../../components/DashboardComponents/SavedReviews";
+import SavedReplies from "../../components/DashboardComponents/SavedReplies";
 import "./style.css";
 
 const Dashboard: FC = () => {
@@ -18,10 +18,10 @@ const Dashboard: FC = () => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <SavedReviews />
+            <SavedReplies />
           </TabPanel>
           <TabPanel>
-            <AddReview />
+            <AddReply />
           </TabPanel>
           <TabPanel>
             <AISettings />

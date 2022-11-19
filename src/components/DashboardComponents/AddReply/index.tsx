@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAppSelector } from "../../../types/store";
 import { addReview } from "../../../services/reviews";
 
-const AddReview = () => {
+const AddReply = () => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -11,7 +11,7 @@ const AddReview = () => {
   const [isValid, setIsValid] = useState(false);
   const { uid } = useAppSelector((state) => state.auth);
 
-  const addNewReview = async () => {
+  const addNewReply = async () => {
     if (!review) {
       setIsValid(true);
       return;
@@ -51,11 +51,11 @@ const AddReview = () => {
       />
       <br />
       <br />
-      <Button isLoading={loading} onClick={addNewReview} colorScheme="pink">
+      <Button isLoading={loading} onClick={addNewReply} colorScheme="pink">
         Add
       </Button>
     </div>
   );
 };
 
-export default AddReview;
+export default AddReply;
