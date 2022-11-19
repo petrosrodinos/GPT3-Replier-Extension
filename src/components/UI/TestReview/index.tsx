@@ -24,7 +24,7 @@ const TestReview: FC<IProps> = ({ review, index }) => {
       >
         Copy to Clipboard
       </Icon>
-      <Text color="pink.500" fontWeight="bold" fontSize="lg">
+      <Text color="pink.700" fontWeight="bold" fontSize="lg">
         {review}
       </Text>
 

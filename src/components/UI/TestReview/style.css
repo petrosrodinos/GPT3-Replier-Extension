@@ -5,3 +5,8 @@
 .copy-to-clickboard-icon:hover {
   cursor: pointer;
 }
+
+.playground-card-container {
+  padding: 10px;
+  margin: 10px;
+}

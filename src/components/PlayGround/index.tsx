@@ -1,6 +1,7 @@
 import { getReply, getRandomReply } from "../../utils/gpt3";
 import TestReview from "../UI/TestReview";
 import { TEST_REVIEWS } from "../../utils/constants";
+import { Text, Highlight } from "@chakra-ui/react";
 import "./style.css";
 
 let pressed = false;
@@ -76,6 +77,15 @@ const getClipboardValue = async () => {
 function PlayGround() {
   return (
     <>
+      <div className="playground-info-container">
+        <Highlight
+          query={["up arrow", "arrow down"]}
+          styles={{ px: "2", py: "1", rounded: "full", bg: "red.100" }}
+        >
+          Copy a review from the spotlight section and press the up arrow key to
+          get a reply and the arrow down key to get the previews reply.
+        </Highlight>
+      </div>
       {TEST_REVIEWS.map((review, index) => {
         return <TestReview review={review} index={index} />;
       })}
