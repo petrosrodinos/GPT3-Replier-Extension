@@ -45,3 +45,5 @@ export const REPLY_TAGS = [
 export const DEFAULT_TAGS = ["polite", "friendly", "helpful"];
 
 export const MAX_TAGS = 5;
+
+export const MIN_TAGS = 3;

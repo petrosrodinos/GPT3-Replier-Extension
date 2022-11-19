@@ -1,5 +1,5 @@
 import { Button, SimpleGrid } from "@chakra-ui/react";
-import { REPLY_TAGS, MAX_TAGS } from "../../../utils/constants";
+import { REPLY_TAGS, MIN_TAGS } from "../../../utils/constants";
 import AITag from "../../AITag";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../types/store";
@@ -30,7 +30,7 @@ const AISettings = () => {
   };
 
   const saveTags = async () => {
-    if (tags.length === 0) {
+    if (tags.length <= MIN_TAGS) {
       toast({
         title: "Please select at least 3 tags",
         status: "warning",
