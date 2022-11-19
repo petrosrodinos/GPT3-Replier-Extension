@@ -1,31 +1,15 @@
 import { db } from "../utils/firebase";
-import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
-import { Reply } from "../types/replies";
+import { doc, updateDoc } from "firebase/firestore";
+import { TagsToSend } from "../types/tags";
 
-export const addTag = async (review: any): Promise<boolean> => {
+export const addTags = async (tags: TagsToSend): Promise<boolean> => {
   try {
-    const reviewsRef = collection(db, "replies");
-    await addDoc(reviewsRef, review);
+    const { userId, ...Tags } = tags;
+    const tagsRef = doc(db, "user", tags.userId);
+    await updateDoc(tagsRef, { tags: Tags });
     return true;
   } catch (e) {
     console.error("Error adding document: ", e);
     return false;
-  }
-};
-
-export const getReplies = async (userId: string): Promise<Reply[]> => {
-  try {
-    let replies: Reply[] = [];
-    const docRef = collection(db, "replies");
-    const q = query(docRef, where("userId", "==", userId));
-
-    const querySnapshot = await getDocs(q);
-    querySnapshot.forEach((doc: any) => {
-      replies.push(doc.data());
-    });
-    return replies;
-  } catch (e) {
-    console.error("Error adding document: ", e);
-    return [];
   }
 };

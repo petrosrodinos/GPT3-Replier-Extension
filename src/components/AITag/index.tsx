@@ -1,15 +1,17 @@
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import { FC, useState, useEffect } from "react";
+import { MAX_TAGS } from "../../utils/constants";
 import "./style.css";
 
 interface IProps {
   tag: string;
   tags: string[];
+  length: number;
   onDelete: (tag: string) => void;
   onAdd: (tag: string) => void;
 }
 
-const AITag: FC<IProps> = ({ tag, tags, onDelete, onAdd }) => {
+const AITag: FC<IProps> = ({ tag, tags, length, onDelete, onAdd }) => {
   const [selected, setSelected] = useState(false);
 
   useEffect(() => {
@@ -19,9 +21,10 @@ const AITag: FC<IProps> = ({ tag, tags, onDelete, onAdd }) => {
   }, []);
 
   const handleClick = () => {
-    setSelected(true);
     if (!selected) {
       onAdd(tag);
+      if (length + 1 > MAX_TAGS) return;
+      setSelected(true);
     }
   };
 
