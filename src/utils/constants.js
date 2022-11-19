@@ -1,8 +1,8 @@
 export const FREE_REQUESTS =
   parseInt(process.env.REACT_APP_FREE_REQUESTS) || 20;
 
-export const SAVED_REVIEWS =
-  parseInt(process.env.REACT_APP_SAVED_REVIEWS) || 20;
+export const SAVED_REPLIES =
+  parseInt(process.env.REACT_APP_SAVED_REPLIES_COUNT) || 10;
 
 export const OPEN_AI_KEY = process.env.REACT_APP_OPEN_AI_KEY || "";
 

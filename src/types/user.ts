@@ -5,11 +5,11 @@ export interface User {
   photoURL: string;
   isLoggedIn?: boolean;
   tags: string[];
-  plan?: Plan | {};
+  plan: Plan | null;
   userEntered?: boolean;
 }
 
 interface Plan {
   requests: number;
-  savedReviews: number;
+  savedReplies: number;
 }

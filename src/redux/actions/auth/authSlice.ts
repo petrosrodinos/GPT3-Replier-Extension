@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { User } from "../../../types/user";
 import {
   FREE_REQUESTS,
-  SAVED_REVIEWS,
+  SAVED_REPLIES,
   DEFAULT_TAGS,
 } from "../../../utils/constants";
 
@@ -16,7 +16,7 @@ const initialState: User = {
   userEntered: false,
   plan: {
     requests: FREE_REQUESTS,
-    savedReviews: SAVED_REVIEWS,
+    savedReplies: SAVED_REPLIES,
   },
 };
 
@@ -40,7 +40,7 @@ export const authSlice = createSlice({
       state.email = "";
       state.photoURL = "";
       state.uid = "";
-      state.plan = {};
+      state.plan = null;
       state.tags = DEFAULT_TAGS;
       state.userEntered = false;
     },

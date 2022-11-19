@@ -1,0 +1,12 @@
+.stat-details-container {
+  padding: 15px;
+}
+
+.stat-card-container {
+  margin-bottom: 10px;
+  border: 1.5px solid pink;
+}
+
+.stat-details {
+  color: pink;
+}

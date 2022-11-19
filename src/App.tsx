@@ -21,7 +21,7 @@ function App() {
               <Route path="login" element={<Auth />} />
               <Route path="contact" element={<ContactForm />} />
               {isLoggedIn && <Route path="dashboard" element={<Dashboard />} />}
-              <Route path="pricing" element={<Pricing />} />
+              <Route path="plans" element={<Pricing />} />
               <Route path="*" element={<Navigate to="/home" replace />} />
             </Route>
           </Routes>

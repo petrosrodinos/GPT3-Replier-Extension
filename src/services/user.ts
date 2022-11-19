@@ -1,7 +1,7 @@
 import { setDoc, doc, getDoc } from "firebase/firestore";
 import { User } from "../types/user";
 import { db } from "../utils/firebase";
-import { FREE_REQUESTS, SAVED_REVIEWS, DEFAULT_TAGS } from "../utils/constants";
+import { FREE_REQUESTS, SAVED_REPLIES, DEFAULT_TAGS } from "../utils/constants";
 import { saveUser } from "../utils/storage";
 
 export const addNewUser = async (user: any): Promise<User | null> => {
@@ -9,7 +9,7 @@ export const addNewUser = async (user: any): Promise<User | null> => {
     let tags = DEFAULT_TAGS;
     let plan = {
       requests: FREE_REQUESTS,
-      savedReviews: SAVED_REVIEWS,
+      savedReplies: SAVED_REPLIES,
     };
     let userToStore: User = {
       uid: user.uid,

@@ -15,8 +15,8 @@ export const NAV_ITEMS: Array<NavItem> = [
     protected: true,
   },
   {
-    label: "Pricing",
-    link: "/pricing",
+    label: "Plans",
+    link: "/plans",
   },
   {
     label: "About",
