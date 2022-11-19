@@ -13,8 +13,20 @@ import {
   IconProps,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../types/store";
+import { useEffect } from "react";
 
 export default function CallToActionWithVideo() {
+  const navigate = useNavigate();
+  const { isLoggedIn, userEntered } = useAppSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (isLoggedIn && !userEntered) {
+      navigate("/dashboard");
+    }
+  }, []);
+
   return (
     <Container maxW={"7xl"}>
       <Stack

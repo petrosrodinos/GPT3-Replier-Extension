@@ -6,6 +6,7 @@ export interface User {
   isLoggedIn?: boolean;
   tags?: string[];
   plan?: Plan | {};
+  userEntered?: boolean;
 }
 
 interface Plan {
