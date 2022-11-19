@@ -21,11 +21,18 @@ export const stripeConfig = {
   secretKey: process.env.REACT_APP_STRIPE_SECRET_KEY,
 };
 
+export const TEST_REVIEWS = [
+  "Amazing stay, place was beautiful and in good location. Highly recommend to anyone",
+  "The place was great, the host was very helpful and the location was perfect. I would definitely stay here again.",
+  "This hotel is horrible. The staff is rude and the rooms are dirty. I would never stay here again.",
+  "The service is very slow and the rooms are not clean. I would not recommend this hotel to anyone.",
+];
+
 export const REPLY_TAGS = [
   "helpful",
   "proffesionnal",
   "funny",
-  "sad",
+  "sympathetic",
   "happy",
   "angry",
   "sarcastic",

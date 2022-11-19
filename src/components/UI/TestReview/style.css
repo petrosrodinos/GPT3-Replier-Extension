@@ -1,0 +1,7 @@
+.copy-to-clickboard-icon {
+  font-size: 1.5rem;
+}
+
+.copy-to-clickboard-icon:hover {
+  cursor: pointer;
+}

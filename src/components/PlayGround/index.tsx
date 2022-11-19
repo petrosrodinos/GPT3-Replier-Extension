@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { getReply, getRandomReply } from "../../utils/gpt3";
+import TestReview from "../UI/TestReview";
+import { TEST_REVIEWS } from "../../utils/constants";
 import "./style.css";
 
 let pressed = false;
@@ -32,8 +33,8 @@ const handleArrowUp = async () => {
   }
   input.style.cursor = "wait";
   const review = await getClipboardValue();
-  const reply = await getReply(review);
-  // const reply = getRandomReply();
+  // const reply = await getReply(review);
+  const reply = getRandomReply();
   replies.push(reply);
   input.style.cursor = "default";
   input.value = reply;
@@ -72,29 +73,13 @@ const getClipboardValue = async () => {
   return text;
 };
 
-const TEST_REVIEW =
-  "Amazing stay, place was beautiful and in good location. Highly recommend to anyone";
-
 function PlayGround() {
-  const [review, setReview] = useState(TEST_REVIEW);
-
-  const copyToClickboard = async () => {
-    await navigator.clipboard.writeText(review);
-  };
-
   return (
-    <div className="App">
-      <input
-        onChange={(e: any) => setReview(e.target.value)}
-        type="text"
-        value={review}
-        style={{ width: "100%" }}
-      />
-      <button onClick={copyToClickboard}>COPY</button>
-
-      <br />
-      <textarea id="input" placeholder="review" rows={10} cols={50} />
-    </div>
+    <>
+      {TEST_REVIEWS.map((review, index) => {
+        return <TestReview review={review} index={index} />;
+      })}
+    </>
   );
 }
 
