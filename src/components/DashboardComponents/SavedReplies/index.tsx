@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getReplies } from "../../../services/reviews";
+import { getReplies } from "../../../services/replies";
 import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
 import ReplyCard from "../../ReplyCard";

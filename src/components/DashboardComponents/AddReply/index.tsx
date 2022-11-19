@@ -1,7 +1,7 @@
 import { Button, Textarea, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAppSelector } from "../../../types/store";
-import { addReview } from "../../../services/reviews";
+import { addReview } from "../../../services/replies";
 
 const AddReply = () => {
   const toast = useToast();

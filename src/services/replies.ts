@@ -1,5 +1,4 @@
 import { db } from "../utils/firebase";
-
 import { addDoc, collection, query, where, getDocs } from "firebase/firestore";
 import { Reply } from "../types/replies";
 
