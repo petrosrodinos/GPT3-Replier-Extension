@@ -4,7 +4,7 @@ export interface User {
   email: string;
   photoURL: string;
   isLoggedIn?: boolean;
-  tags?: string[];
+  tags: string[];
   plan?: Plan | {};
   userEntered?: boolean;
 }

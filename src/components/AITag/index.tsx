@@ -1,15 +1,22 @@
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import "./style.css";
 
 interface IProps {
   tag: string;
+  tags: string[];
   onDelete: (tag: string) => void;
   onAdd: (tag: string) => void;
 }
 
-const AITag: FC<IProps> = ({ tag, onDelete, onAdd }) => {
+const AITag: FC<IProps> = ({ tag, tags, onDelete, onAdd }) => {
   const [selected, setSelected] = useState(false);
+
+  useEffect(() => {
+    if (tags.includes(tag)) {
+      setSelected(true);
+    }
+  }, []);
 
   const handleClick = () => {
     setSelected(true);

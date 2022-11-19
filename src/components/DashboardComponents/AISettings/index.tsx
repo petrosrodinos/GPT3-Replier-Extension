@@ -1,10 +1,12 @@
 import { Button, SimpleGrid } from "@chakra-ui/react";
 import { REPLY_TAGS } from "../../../utils/constants";
 import AITag from "../../AITag";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAppSelector } from "../../../types/store";
 import "./style.css";
 
 const AISettings = () => {
+  const { tags: selectedTags } = useAppSelector((state) => state.auth);
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -25,7 +27,13 @@ const AISettings = () => {
     <div>
       <SimpleGrid columns={[2, null, 5]} spacing="10px">
         {REPLY_TAGS.map((tag) => (
-          <AITag onDelete={onDelete} onAdd={onAdd} tag={tag} key={tag} />
+          <AITag
+            tag={tag}
+            onDelete={onDelete}
+            onAdd={onAdd}
+            tags={selectedTags}
+            key={tag}
+          />
         ))}
       </SimpleGrid>
       <br />
