@@ -1,6 +1,6 @@
 import { Tag, TagLabel, TagCloseButton } from "@chakra-ui/react";
 import { FC, useState, useEffect } from "react";
-import { MAX_TAGS } from "../../utils/constants";
+import { MAX_TAGS } from "../../../utils/constants";
 import { useToast } from "@chakra-ui/react";
 import "./style.css";
 interface IProps {

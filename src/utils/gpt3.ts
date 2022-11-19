@@ -1,4 +1,5 @@
 import { OPEN_AI_KEY } from "./constants";
+import store from "../redux/store";
 
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -8,7 +9,9 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 export const getReply = async (review: string): Promise<string> => {
-  const config = "rude and ironic";
+  const state = store.getState();
+
+  const config = state.auth.tags.join(" ");
   const prompt = `generate a ${config} response for the following review: ${review}`;
   let response: any;
   try {
@@ -48,7 +51,6 @@ export const TEST_DATA = [
 export function getRandomReply(): string {
   const index = randomNumber();
   const reply = TEST_DATA[index];
-  console.log(reply);
   return reply;
 }
 

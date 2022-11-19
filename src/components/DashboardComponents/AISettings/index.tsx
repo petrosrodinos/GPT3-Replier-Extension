@@ -1,6 +1,6 @@
 import { Button, SimpleGrid } from "@chakra-ui/react";
 import { REPLY_TAGS, MIN_TAGS } from "../../../utils/constants";
-import AITag from "../../AITag";
+import AITag from "../../UI/AITag";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../types/store";
 import { useToast } from "@chakra-ui/react";

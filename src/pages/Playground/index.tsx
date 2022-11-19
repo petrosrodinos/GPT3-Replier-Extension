@@ -1,5 +1,8 @@
 import { useAppSelector } from "../../types/store";
 import AuthIndicator from "../../components/auth/AuthIndicator";
+import { Card } from "@chakra-ui/card";
+import { Textarea, Text } from "@chakra-ui/react";
+import PlayGround from "../../components/PlayGround";
 import "./style.css";
 
 const Playground = () => {
@@ -7,7 +10,7 @@ const Playground = () => {
   return (
     <div>
       {isLoggedIn ? (
-        <div>grgrg</div>
+        <PlayGround />
       ) : (
         <AuthIndicator
           redirect="playground"

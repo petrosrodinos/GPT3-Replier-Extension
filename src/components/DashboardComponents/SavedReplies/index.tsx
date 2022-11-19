@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getReplies } from "../../../services/replies";
 import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
-import ReplyCard from "../../ReplyCard";
+import ReplyCard from "../../UI/ReplyCard";
 import "./style.css";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 

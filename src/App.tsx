@@ -1,10 +1,10 @@
 import Home from "./pages/Home";
-import AppBar from "./components/AppBar";
+import AppBar from "./components/UI/AppBar";
 import Auth from "./pages/Auth";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Container from "./components/Container";
 import Dashboard from "./pages/Dashboard";
-import Pricing from "./pages/Pricing";
+import Pricing from "./pages/Plans";
 import ContactForm from "./pages/Contact";
 import { useAppSelector } from "./types/store";
 import Playground from "./pages/Playground";
@@ -19,7 +19,7 @@ function App() {
           <Routes>
             <Route path="/*">
               <Route index path="home" element={<Home />} />
-              <Route path="login" element={<Auth />} />
+              <Route path="signup" element={<Auth />} />
               <Route path="contact" element={<ContactForm />} />
               <Route path="playground" element={<Playground />} />
               {isLoggedIn && <Route path="dashboard" element={<Dashboard />} />}

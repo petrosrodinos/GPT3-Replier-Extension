@@ -17,8 +17,8 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FiPower } from "react-icons/fi";
 import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../../services/auth";
-import { useAppSelector } from "../../types/store";
+import { logoutUser } from "../../../services/auth";
+import { useAppSelector } from "../../../types/store";
 import { NAV_ITEMS, NavItem } from "./Links";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
@@ -38,7 +38,7 @@ export default function WithSubnavigation() {
   };
 
   const handleLogin = () => {
-    navigate("/login");
+    navigate("/signup");
   };
 
   return (

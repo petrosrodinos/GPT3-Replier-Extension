@@ -1,7 +1,7 @@
 import { CardBody, Card } from "@chakra-ui/card";
 import { Tooltip, Text } from "@chakra-ui/react";
 import { FC, useState } from "react";
-import { Reply } from "../../types/replies";
+import { Reply } from "../../../types/replies";
 
 interface IProps {
   reply: Reply;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { getReply, getRandomReply } from "../utils/gpt3";
+import { getReply, getRandomReply } from "../../utils/gpt3";
+import "./style.css";
 
 let pressed = false;
 let replies: string[] = [];
@@ -12,14 +13,9 @@ const getInputElement = (
   let id = document.activeElement?.id;
   if (!id) return null;
   if (arrow === "ArrowUp") {
-    if (id === prevId) {
-      // if (replies.length >= 3) {
-      //   alert("You can only use this feature 3 times");
-      //   return null;
-      // }
-    } else {
-      prevId = id;
+    if (id !== prevId) {
       replies = [];
+      prevId = id;
     }
   }
   let input = document.getElementById(id) as HTMLInputElement;
@@ -79,7 +75,7 @@ const getClipboardValue = async () => {
 const TEST_REVIEW =
   "Amazing stay, place was beautiful and in good location. Highly recommend to anyone";
 
-function Test() {
+function PlayGround() {
   const [review, setReview] = useState(TEST_REVIEW);
 
   const copyToClickboard = async () => {
@@ -102,4 +98,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default PlayGround;
