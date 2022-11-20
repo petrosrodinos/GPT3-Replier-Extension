@@ -4,24 +4,28 @@ import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
 import ReplyCard from "../../UI/ReplyCard";
 import "./style.css";
-import { Alert, AlertIcon } from "@chakra-ui/react";
+import { Alert, AlertIcon, Spinner } from "@chakra-ui/react";
 
 const SavedReplies = () => {
   const { uid } = useAppSelector((state) => state.auth);
   const [replies, setReplies] = useState<Reply[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getUserReplies();
   }, [uid]);
 
   const getUserReplies = async () => {
+    setLoading(true);
     const replies = await getReplies(uid);
+    setLoading(false);
     setReplies(replies);
   };
 
   return (
     <div>
-      {replies.length === 0 && (
+      {loading && <Spinner className="spinner" size="lg" color="pink.400" />}
+      {replies.length === 0 && !loading && (
         <Alert status="warning">
           <AlertIcon />
           You have no saved replies

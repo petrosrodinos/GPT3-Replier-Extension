@@ -19,3 +19,8 @@
 .card-icon:hover {
   cursor: pointer;
 }
+
+.spinner {
+  display: flex !important;
+  margin: 0 auto !important;
+}
