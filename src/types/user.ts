@@ -9,7 +9,7 @@ export interface User {
   userEntered?: boolean;
 }
 
-interface Plan {
+export interface Plan {
   requests: number;
   savedReplies: number;
 }

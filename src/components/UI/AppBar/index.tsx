@@ -175,7 +175,11 @@ const MobileNav: FC<any> = ({ onToggle, isOpen }) => {
     <Drawer placement="left" onClose={onToggle} isOpen={isOpen}>
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+        <DrawerHeader borderBottomWidth="1px">
+          <Text fontFamily={"heading"} fontSize={"xl"} color="pink.400">
+            Logo
+          </Text>
+        </DrawerHeader>
         <DrawerBody>
           <Stack
             bg={useColorModeValue("white", "gray.800")}

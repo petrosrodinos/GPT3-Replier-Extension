@@ -9,4 +9,5 @@
 
 .stat-details {
   color: pink;
+  font-weight: bold !important;
 }

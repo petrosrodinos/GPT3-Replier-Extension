@@ -1,12 +1,11 @@
 import { Button, Textarea, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAppSelector } from "../../../types/store";
-import { addReview } from "../../../services/replies";
+import { addReply } from "../../../services/replies";
 
 const AddReply = () => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const [review, setReview] = useState("");
   const [isValid, setIsValid] = useState(false);
   const { uid } = useAppSelector((state) => state.auth);
@@ -17,7 +16,7 @@ const AddReply = () => {
       return;
     }
     setLoading(true);
-    const reviewAdded = await addReview({ review, userId: uid });
+    const reviewAdded = await addReply({ review, userId: uid });
     if (reviewAdded) {
       setReview("");
       setLoading(false);
@@ -28,7 +27,6 @@ const AddReply = () => {
         isClosable: true,
       });
     } else {
-      setError("Could not add your reply");
       setLoading(false);
       toast({
         title: "Could not add your reply",
