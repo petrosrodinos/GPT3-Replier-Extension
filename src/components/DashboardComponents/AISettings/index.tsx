@@ -3,11 +3,12 @@ import { REPLY_TAGS, MIN_TAGS } from "../../../utils/constants";
 import AITag from "../../UI/AITag";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../types/store";
-import { useToast } from "@chakra-ui/react";
+import { useToast, Select } from "@chakra-ui/react";
 import { addTags } from "../../../services/tags";
 import { updateTags } from "../../../redux/actions/auth/authSlice";
 import { useAppDispatch } from "../../../types/store";
 import "./style.css";
+import ReplySelector from "../../UI/Select";
 
 const AISettings = () => {
   const toast = useToast();
@@ -15,7 +16,6 @@ const AISettings = () => {
   const { uid, tags: selectedTags } = useAppSelector((state) => state.auth);
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     setTags(selectedTags);
@@ -53,7 +53,7 @@ const AISettings = () => {
     } else {
       setLoading(false);
       toast({
-        title: "Could not add your tags",
+        title: "Could not update tags",
         status: "error",
         duration: 2000,
         isClosable: true,
@@ -63,6 +63,7 @@ const AISettings = () => {
 
   return (
     <div>
+      <ReplySelector />
       <SimpleGrid columns={[2, null, 5]} spacing="10px">
         {REPLY_TAGS.map((tag) => (
           <AITag
