@@ -3,8 +3,8 @@ import { getReplies } from "../../../services/replies";
 import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
 import ReplyCard from "../../UI/ReplyCard";
-import "./style.css";
 import { Alert, AlertIcon, Spinner } from "@chakra-ui/react";
+import "./style.css";
 
 const SavedReplies = () => {
   const { uid } = useAppSelector((state) => state.auth);

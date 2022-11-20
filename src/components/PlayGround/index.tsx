@@ -79,11 +79,11 @@ function PlayGround() {
     <>
       <div className="playground-info-container">
         <Highlight
-          query={["up arrow", "arrow down"]}
+          query={["up arrow", "down arrow"]}
           styles={{ px: "2", py: "1", rounded: "full", bg: "red.100" }}
         >
           Copy a review from the spotlight section and press the up arrow key to
-          get a reply and the arrow down key to get the previews reply.
+          get a reply and the down arrow key to get the previews reply.
         </Highlight>
       </div>
       {TEST_REVIEWS.map((review, index) => {
