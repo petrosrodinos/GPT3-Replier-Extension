@@ -6,13 +6,11 @@ import {
   where,
   getDocs,
   doc,
-  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { Reply } from "../types/replies";
 import store from "../redux/store";
 import { updatePlan } from "../redux/actions/auth/authSlice";
-import { Plan } from "../types/user";
 
 export const addReply = async (reply: Reply): Promise<boolean> => {
   try {

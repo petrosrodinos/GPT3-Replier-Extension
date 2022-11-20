@@ -8,11 +8,21 @@ const AddReply = () => {
   const [loading, setLoading] = useState(false);
   const [review, setReview] = useState("");
   const [isValid, setIsValid] = useState(false);
-  const { uid } = useAppSelector((state) => state.auth);
+  const { uid, plan } = useAppSelector((state) => state.auth);
 
   const addNewReply = async () => {
     if (!review) {
       setIsValid(true);
+      return;
+    }
+    if (plan?.savedReplies == 0) {
+      toast({
+        title: "You have reached your limit",
+        description: "You can't add more replies",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
       return;
     }
     setLoading(true);
