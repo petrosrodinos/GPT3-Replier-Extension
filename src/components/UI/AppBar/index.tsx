@@ -12,6 +12,11 @@ import {
   useBreakpointValue,
   useDisclosure,
   Avatar,
+  Drawer,
+  DrawerBody,
+  DrawerContent,
+  DrawerHeader,
+  DrawerOverlay,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FiPower } from "react-icons/fi";
@@ -122,7 +127,7 @@ export default function WithSubnavigation() {
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>
-        <MobileNav onToggle={onToggle} />
+        <MobileNav isOpen={isOpen} onToggle={onToggle} />
       </Collapse>
     </Box>
   );
@@ -164,28 +169,38 @@ const DesktopNav = () => {
   );
 };
 
-const MobileNav: FC<any> = ({ onToggle }) => {
+const MobileNav: FC<any> = ({ onToggle, isOpen }) => {
   const { isLoggedIn } = useAppSelector((state) => state.auth);
   return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      {NAV_ITEMS.map((navItem) => {
-        return navItem.protected && !isLoggedIn ? (
-          <></>
-        ) : (
-          <MobileNavItem onToggle={onToggle} key={navItem.label} {...navItem} />
-        );
-      })}
-    </Stack>
+    <Drawer placement="left" onClose={onToggle} isOpen={isOpen}>
+      <DrawerOverlay />
+      <DrawerContent>
+        <DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+        <DrawerBody>
+          <Stack
+            bg={useColorModeValue("white", "gray.800")}
+            p={4}
+            display={{ md: "none" }}
+          >
+            {NAV_ITEMS.map((navItem) => {
+              return navItem.protected && !isLoggedIn ? (
+                <></>
+              ) : (
+                <MobileNavItem
+                  onToggle={onToggle}
+                  key={navItem.label}
+                  {...navItem}
+                />
+              );
+            })}
+          </Stack>
+        </DrawerBody>
+      </DrawerContent>
+    </Drawer>
   );
 };
 
 const MobileNavItem: FC<any> = ({ label, link, onToggle }) => {
-  const { isOpen } = useDisclosure();
-
   return (
     <Stack spacing={4}>
       <Flex
@@ -206,17 +221,6 @@ const MobileNavItem: FC<any> = ({ label, link, onToggle }) => {
           </Text>
         </RouterLink>
       </Flex>
-
-      <Collapse in={isOpen} animateOpacity style={{ marginTop: "0!important" }}>
-        <Stack
-          mt={2}
-          pl={4}
-          borderLeft={1}
-          borderStyle={"solid"}
-          borderColor={useColorModeValue("gray.200", "gray.700")}
-          align={"start"}
-        ></Stack>
-      </Collapse>
     </Stack>
   );
 };
