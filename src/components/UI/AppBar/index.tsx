@@ -24,7 +24,7 @@ import { BiLogInCircle } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../../../services/auth";
 import { useAppSelector } from "../../../types/store";
-import { NAV_ITEMS, NavItem } from "./Links";
+import { NAV_ITEMS } from "./links";
 import { Link as RouterLink } from "react-router-dom";
 import { FC } from "react";
 import "./style.css";
