@@ -11,6 +11,36 @@ import {
 import { Reply } from "../types/replies";
 import store from "../redux/store";
 import { updatePlan } from "../redux/actions/auth/authSlice";
+import { openai } from "../utils/gpt3";
+
+export const getAIReply = async (review: string): Promise<string> => {
+  const state = store.getState().auth;
+
+  const config = state.tags.join(" ");
+  const prompt = `generate a ${config} response for the following review: ${review}`;
+  let response: any;
+  try {
+    response = await openai.createCompletion({
+      model: "text-davinci-002",
+      prompt: prompt,
+      temperature: 0.7,
+      max_tokens: 250,
+      top_p: 1,
+      presence_penalty: 0,
+      frequency_penalty: 0.6,
+      best_of: 1,
+    });
+    await substructRequestCount(state.uid, "ai-reply");
+    const text = response.data.choices[0].text.trim();
+    const reply = text || "could not generate a reply";
+
+    return reply;
+  } catch (error) {
+    console.log(error);
+  }
+
+  return "could not generate a reply";
+};
 
 export const addReply = async (reply: Reply): Promise<boolean> => {
   try {
@@ -66,3 +96,26 @@ export const substructRequestCount = async (
     return false;
   }
 };
+
+export const TEST_DATA = [
+  "Reply 1",
+  "Reply 2",
+  "Reply 3",
+  "Reply 4",
+  "Reply 5",
+  "Reply 6",
+  "Reply 7",
+  "Reply 8",
+  "Reply 9",
+  "Reply 10",
+];
+
+export function getRandomReply(): string {
+  const index = randomNumber();
+  const reply = TEST_DATA[index];
+  return reply;
+}
+
+function randomNumber(min = 0, max = 9) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

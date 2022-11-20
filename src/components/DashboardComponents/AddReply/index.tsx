@@ -17,8 +17,8 @@ const AddReply = () => {
     }
     if (plan?.savedReplies == 0) {
       toast({
-        title: "You have reached your limit",
-        description: "You can't add more replies",
+        title: "You can't add more replies",
+        description: "Please upgrade your plan to continue",
         status: "error",
         duration: 3000,
         isClosable: true,

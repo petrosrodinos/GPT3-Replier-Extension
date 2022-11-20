@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Textarea, Text, Button, Icon } from "@chakra-ui/react";
+import { Textarea, Text, Icon } from "@chakra-ui/react";
 import { Card } from "@chakra-ui/card";
 import { BiCopy } from "react-icons/bi";
 import "./style.css";

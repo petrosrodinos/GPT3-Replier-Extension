@@ -1,7 +1,8 @@
-import { getReply, getRandomReply } from "../../utils/gpt3";
+import { getAIReply, getRandomReply } from "../../services/replies";
 import TestReview from "../UI/TestReview";
 import { TEST_REVIEWS } from "../../utils/constants";
-import { Text, Highlight } from "@chakra-ui/react";
+import { Highlight } from "@chakra-ui/react";
+import store from "../../redux/store";
 import "./style.css";
 
 let pressed = false;
@@ -32,10 +33,15 @@ const handleArrowUp = async () => {
     input.value = replies[replies.length - downPressed];
     return;
   }
+  const remainedRequests = store.getState().auth.plan?.requests;
+  if (remainedRequests === 0) {
+    input.value = "You have no remained requests";
+    return;
+  }
   input.style.cursor = "wait";
   const review = await getClipboardValue();
-  // const reply = await getReply(review);
-  const reply = getRandomReply();
+  const reply = await getAIReply(review);
+  // const reply = getRandomReply();
   replies.push(reply);
   input.style.cursor = "default";
   input.value = reply;

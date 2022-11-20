@@ -30,7 +30,7 @@ const AISettings = () => {
   };
 
   const saveTags = async () => {
-    if (tags.length <= MIN_TAGS) {
+    if (tags.length < MIN_TAGS) {
       toast({
         title: "Please select at least 3 tags",
         status: "warning",
