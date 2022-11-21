@@ -49,7 +49,7 @@ export const REPLY_TAGS = [
   "neutral",
 ];
 
-export const DEFAULT_TAGS = ["polite", "friendly", "helpful"];
+export const DEFAULT_TAGS = ["polite", "sympathetic", "helpful"];
 
 export const MAX_TAGS = 5;
 
