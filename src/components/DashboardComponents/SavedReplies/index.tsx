@@ -46,7 +46,6 @@ const SavedReplies = () => {
       {REPLY_FORMAT.map((category) => (
         <div key={category}>
           <b>{category}</b>
-          <br />
           {replies?.map((reply: Reply, index) => {
             return <ReplyCard category={category} reply={reply} key={index} />;
           })}

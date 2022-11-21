@@ -17,7 +17,8 @@ export const getAIReply = async (review: string): Promise<string> => {
   const state = store.getState().auth;
 
   const config = state.settings?.tags.join(" ");
-  const prompt = `generate a ${config} response for the following review: ${review}`;
+  const replyFormat = state.settings?.replyFormat;
+  const prompt = `generate a ${config} response for the following ${replyFormat}: ${review}`;
   let response: any;
   try {
     response = await openai.createCompletion({
