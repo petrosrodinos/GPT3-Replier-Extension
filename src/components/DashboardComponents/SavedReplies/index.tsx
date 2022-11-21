@@ -33,12 +33,7 @@ const SavedReplies = () => {
         </Alert>
       )}
       <br />
-      <Button
-        variant="outline"
-        isLoading={loading}
-        onClick={getUserReplies}
-        colorScheme="pink"
-      >
+      <Button variant="outline" onClick={getUserReplies} colorScheme="pink">
         Get Replies
       </Button>
       <br />
