@@ -5,10 +5,10 @@ import { Reply } from "../../../types/replies";
 
 interface IProps {
   reply: Reply;
-  index: number;
+  category?: string;
 }
 
-const ReplyCard: FC<IProps> = ({ reply, index }) => {
+const ReplyCard: FC<IProps> = ({ reply, category }) => {
   const [copyState, setCopyState] = useState(false);
 
   const copyToClipboard = (text: string) => {
@@ -19,19 +19,18 @@ const ReplyCard: FC<IProps> = ({ reply, index }) => {
     }, 500);
   };
 
-  return (
+  return category === reply.category ? (
     <Tooltip label={!copyState ? "Copy to Clipboard" : "Copied"}>
       <Card
         onClick={() => copyToClipboard(reply.review)}
         className="card-container"
-        key={index}
       >
         <CardBody>
           <Text>{reply.review}</Text>
         </CardBody>
       </Card>
     </Tooltip>
-  );
+  ) : null;
 };
 
 export default ReplyCard;

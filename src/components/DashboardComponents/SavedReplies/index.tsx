@@ -4,6 +4,7 @@ import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
 import ReplyCard from "../../UI/ReplyCard";
 import { Alert, AlertIcon, Button, Spinner } from "@chakra-ui/react";
+import { REPLY_FORMAT } from "../../../utils/constants";
 import "./style.css";
 
 const SavedReplies = () => {
@@ -42,8 +43,14 @@ const SavedReplies = () => {
       </Button>
       <br />
       <br />
-      {replies?.map((reply: Reply, index) => (
-        <ReplyCard reply={reply} index={index} key={index} />
+      {REPLY_FORMAT.map((category) => (
+        <div key={category}>
+          <b>{category}</b>
+          <br />
+          {replies?.map((reply: Reply, index) => {
+            return <ReplyCard category={category} reply={reply} key={index} />;
+          })}
+        </div>
       ))}
     </div>
   );

@@ -1,7 +1,6 @@
 import { Select } from "@chakra-ui/react";
 import { REPLY_FORMAT } from "../../../utils/constants";
 import { FC } from "react";
-import { useAppSelector } from "../../../types/store";
 
 interface IProps {
   onChange: (value: string) => void;
@@ -9,8 +8,6 @@ interface IProps {
 }
 
 const ReplySelector: FC<IProps> = ({ onChange, value }) => {
-  const { settings } = useAppSelector((state) => state.auth);
-
   const onValueChange = (e: any) => {
     onChange(e.target.value);
   };
@@ -24,7 +21,9 @@ const ReplySelector: FC<IProps> = ({ onChange, value }) => {
         value={value}
       >
         {REPLY_FORMAT.map((value: string) => (
-          <option value={value}>{value}</option>
+          <option key={value} value={value}>
+            {value}
+          </option>
         ))}
       </Select>
       <br />

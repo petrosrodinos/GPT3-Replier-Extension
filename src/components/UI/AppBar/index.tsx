@@ -140,9 +140,7 @@ const DesktopNav = () => {
   return (
     <Stack mt={2} direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => {
-        return navItem.protected && !isLoggedIn ? (
-          <></>
-        ) : (
+        return navItem.protected && !isLoggedIn ? null : (
           <Box key={navItem.label}>
             <Popover trigger={"hover"} placement={"bottom-start"}>
               <PopoverTrigger>
@@ -187,9 +185,7 @@ const MobileNav: FC<any> = ({ onToggle, isOpen }) => {
             display={{ md: "none" }}
           >
             {NAV_ITEMS.map((navItem) => {
-              return navItem.protected && !isLoggedIn ? (
-                <></>
-              ) : (
+              return navItem.protected && !isLoggedIn ? null : (
                 <MobileNavItem
                   onToggle={onToggle}
                   key={navItem.label}
