@@ -12,7 +12,10 @@ const initialState: User = {
   email: "",
   photoURL: "",
   isLoggedIn: false,
-  tags: DEFAULT_TAGS,
+  settings: {
+    tags: DEFAULT_TAGS,
+    replyFormat: "Review",
+  },
   userEntered: false,
   plan: {
     requests: FREE_REQUESTS,
@@ -31,7 +34,7 @@ export const authSlice = createSlice({
       state.photoURL = action.payload.photoURL;
       state.isLoggedIn = true;
       state.plan = action.payload.plan;
-      state.tags = action.payload.tags;
+      state.settings = action.payload.settings;
       state.userEntered = true;
     },
     logout: (state) => {
@@ -41,11 +44,11 @@ export const authSlice = createSlice({
       state.photoURL = "";
       state.uid = "";
       state.plan = null;
-      state.tags = DEFAULT_TAGS;
       state.userEntered = false;
+      state.settings = null;
     },
-    updateTags: (state, action) => {
-      state.tags = action.payload;
+    updateSettings: (state, action) => {
+      state.settings = action.payload;
     },
     updatePlan: (state, action) => {
       state.plan = action.payload;
@@ -54,5 +57,5 @@ export const authSlice = createSlice({
   extraReducers: (builder) => {},
 });
 
-export const { login, logout, updateTags, updatePlan } = authSlice.actions;
+export const { login, logout, updateSettings, updatePlan } = authSlice.actions;
 export default authSlice.reducer;

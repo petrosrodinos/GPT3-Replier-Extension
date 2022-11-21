@@ -1,24 +1,27 @@
 import { Button, SimpleGrid } from "@chakra-ui/react";
-import { REPLY_TAGS, MIN_TAGS } from "../../../utils/constants";
+import { REPLY_TAGS, MIN_TAGS, REPLY_FORMAT } from "../../../utils/constants";
 import AITag from "../../UI/AITag";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "../../../types/store";
-import { useToast, Select } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import { addTags } from "../../../services/tags";
-import { updateTags } from "../../../redux/actions/auth/authSlice";
+import { updateSettings } from "../../../redux/actions/auth/authSlice";
 import { useAppDispatch } from "../../../types/store";
-import "./style.css";
 import ReplySelector from "../../UI/Select";
+import "./style.css";
 
 const AISettings = () => {
   const toast = useToast();
   const dispatch = useAppDispatch();
-  const { uid, tags: selectedTags } = useAppSelector((state) => state.auth);
+  const { uid, settings } = useAppSelector((state) => state.auth);
   const [tags, setTags] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
+  const [replyFor, setReplyFor] = useState<string>(
+    settings?.replyFormat || REPLY_FORMAT[0]
+  );
 
   useEffect(() => {
-    setTags(selectedTags);
+    setTags(settings?.tags || []);
   }, []);
 
   const onDelete = (tag: string) => {
@@ -40,12 +43,12 @@ const AISettings = () => {
       return;
     }
     setLoading(true);
-    const tagsAdded = await addTags({ tags, userId: uid });
+    const tagsAdded = await addTags(tags, uid, replyFor);
     if (tagsAdded) {
       setLoading(false);
-      dispatch(updateTags(tags));
+      dispatch(updateSettings({ tags, replyFormat: replyFor }));
       toast({
-        title: "Tags added successfully",
+        title: "AI Settings updated successfully",
         status: "success",
         duration: 2000,
         isClosable: true,
@@ -61,9 +64,13 @@ const AISettings = () => {
     }
   };
 
+  const onChange = (value: string) => {
+    setReplyFor(value);
+  };
+
   return (
     <div>
-      <ReplySelector />
+      <ReplySelector onChange={onChange} value={replyFor} />
       <SimpleGrid columns={[2, null, 5]} spacing="10px">
         {REPLY_TAGS.map((tag) => (
           <AITag
@@ -71,14 +78,14 @@ const AISettings = () => {
             tag={tag}
             onDelete={onDelete}
             onAdd={onAdd}
-            tags={selectedTags}
+            tags={settings?.tags || []}
             key={tag}
           />
         ))}
       </SimpleGrid>
       <br />
       <Button isLoading={loading} onClick={saveTags} colorScheme="pink">
-        Save Tags
+        Save
       </Button>
     </div>
   );

@@ -16,7 +16,7 @@ import { openai } from "../utils/gpt3";
 export const getAIReply = async (review: string): Promise<string> => {
   const state = store.getState().auth;
 
-  const config = state.tags.join(" ");
+  const config = state.settings?.tags.join(" ");
   const prompt = `generate a ${config} response for the following review: ${review}`;
   let response: any;
   try {

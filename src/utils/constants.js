@@ -54,3 +54,5 @@ export const DEFAULT_TAGS = ["polite", "sympathetic", "helpful"];
 export const MAX_TAGS = 5;
 
 export const MIN_TAGS = 3;
+
+export const REPLY_FORMAT = ["Review", "Message", "Email"];

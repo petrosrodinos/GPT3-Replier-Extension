@@ -1,25 +1,31 @@
 import { Select } from "@chakra-ui/react";
+import { REPLY_FORMAT } from "../../../utils/constants";
 import { FC } from "react";
-import { useAppDispatch } from "../../../types/store";
+import { useAppSelector } from "../../../types/store";
 
-const ReplySelector: FC = () => {
-  const dispatch = useAppDispatch();
+interface IProps {
+  onChange: (value: string) => void;
+  value: string;
+}
 
-  const onChange = (e: any) => {
-    console.log(e.target.value);
-    // dispatch(updateTags(e.target.value));
+const ReplySelector: FC<IProps> = ({ onChange, value }) => {
+  const { settings } = useAppSelector((state) => state.auth);
+
+  const onValueChange = (e: any) => {
+    onChange(e.target.value);
   };
 
   return (
     <>
       <Select
-        onChange={onChange}
+        onChange={onValueChange}
         variant="filled"
         placeholder="Generate reply for..."
+        value={value}
       >
-        <option value="review">Review</option>
-        <option value="email">Email</option>
-        <option value="message">Message</option>
+        {REPLY_FORMAT.map((value: string) => (
+          <option value={value}>{value}</option>
+        ))}
       </Select>
       <br />
     </>

@@ -4,9 +4,14 @@ export interface User {
   email: string;
   photoURL: string;
   isLoggedIn?: boolean;
-  tags: string[];
+  settings: Settings | null;
   plan: Plan | null;
   userEntered?: boolean;
+}
+
+export interface Settings {
+  tags: string[];
+  replyFormat: "Review" | "Message" | "Email";
 }
 
 export interface Plan {

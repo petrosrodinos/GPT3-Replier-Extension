@@ -1,12 +1,14 @@
 import { db } from "../utils/firebase";
 import { doc, updateDoc } from "firebase/firestore";
-import { TagsToSend } from "../types/tags";
 
-export const addTags = async (userTags: TagsToSend): Promise<boolean> => {
+export const addTags = async (
+  tags: string[],
+  userId: string,
+  replyFormat: string
+): Promise<boolean> => {
   try {
-    const { userId, tags } = userTags;
-    const tagsRef = doc(db, "users", userTags.userId);
-    await updateDoc(tagsRef, { tags: tags });
+    const tagsRef = doc(db, "users", userId);
+    await updateDoc(tagsRef, { settings: { tags, replyFormat } });
     return true;
   } catch (e) {
     console.error("Error adding document: ", e);

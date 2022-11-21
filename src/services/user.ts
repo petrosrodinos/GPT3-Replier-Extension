@@ -1,12 +1,15 @@
 import { setDoc, doc, getDoc } from "firebase/firestore";
-import { User } from "../types/user";
+import { User, Settings } from "../types/user";
 import { db } from "../utils/firebase";
 import { FREE_REQUESTS, SAVED_REPLIES, DEFAULT_TAGS } from "../utils/constants";
 import { saveUser } from "../utils/storage";
 
 export const addNewUser = async (user: any): Promise<User | null> => {
   try {
-    let tags = DEFAULT_TAGS;
+    let settings: Settings = {
+      tags: DEFAULT_TAGS,
+      replyFormat: "Review",
+    };
     let plan = {
       requests: FREE_REQUESTS,
       savedReplies: SAVED_REPLIES,
@@ -17,7 +20,7 @@ export const addNewUser = async (user: any): Promise<User | null> => {
       displayName: user.displayName,
       photoURL: user.photoURL,
       plan,
-      tags,
+      settings,
     };
     if (isNewUser(user.metadata.creationTime)) {
       await setDoc(doc(db, "users", user.uid), userToStore);
@@ -27,14 +30,14 @@ export const addNewUser = async (user: any): Promise<User | null> => {
 
       if (docSnap.exists()) {
         plan = docSnap.data()?.plan;
-        tags = docSnap.data()?.tags;
+        settings = docSnap.data()?.settings;
       }
     }
     const finalUser = {
       ...userToStore,
       isLoggedIn: true,
       plan,
-      tags,
+      settings,
     };
     saveUser(finalUser);
     return finalUser;
