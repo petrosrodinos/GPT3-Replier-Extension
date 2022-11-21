@@ -2,7 +2,6 @@ import Facebook from "./Facebook";
 import Google from "./Google";
 import { signInWithGoogle, signInWithFacebook } from "../../services/auth";
 import { addNewUser } from "../../services/user";
-import { useNavigate } from "react-router-dom";
 import { FC } from "react";
 
 interface IProps {
@@ -10,8 +9,6 @@ interface IProps {
 }
 
 const AuthHandler: FC<IProps> = ({ onUserLogin }) => {
-  let navigate = useNavigate();
-
   const handleGoogleSignIn = async () => {
     try {
       signInWithGoogle().then(async (res) => {
