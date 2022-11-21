@@ -3,7 +3,7 @@ import { getReplies } from "../../../services/replies";
 import { useAppSelector } from "../../../types/store";
 import { Reply } from "../../../types/replies";
 import ReplyCard from "../../UI/ReplyCard";
-import { Alert, AlertIcon, Spinner } from "@chakra-ui/react";
+import { Alert, AlertIcon, Button, Spinner } from "@chakra-ui/react";
 import "./style.css";
 
 const SavedReplies = () => {
@@ -31,6 +31,17 @@ const SavedReplies = () => {
           You have no saved replies
         </Alert>
       )}
+      <br />
+      <Button
+        variant="outline"
+        isLoading={loading}
+        onClick={getUserReplies}
+        colorScheme="pink"
+      >
+        Get Replies
+      </Button>
+      <br />
+      <br />
       {replies?.map((reply: Reply, index) => (
         <ReplyCard reply={reply} index={index} key={index} />
       ))}

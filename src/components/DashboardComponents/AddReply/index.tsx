@@ -2,12 +2,15 @@ import { Button, Textarea, useToast } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAppSelector } from "../../../types/store";
 import { addReply } from "../../../services/replies";
+import ReplySelector from "../../UI/Select";
+import { REPLY_FORMAT } from "../../../utils/constants";
 
 const AddReply = () => {
   const toast = useToast();
   const [loading, setLoading] = useState(false);
   const [review, setReview] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [replyFor, setReplyFor] = useState<string>(REPLY_FORMAT[0]);
   const { uid, plan } = useAppSelector((state) => state.auth);
 
   const addNewReply = async () => {
@@ -26,7 +29,11 @@ const AddReply = () => {
       return;
     }
     setLoading(true);
-    const reviewAdded = await addReply({ review, userId: uid });
+    const reviewAdded = await addReply({
+      review,
+      userId: uid,
+      category: replyFor,
+    });
     if (reviewAdded) {
       setReview("");
       setLoading(false);
@@ -46,8 +53,14 @@ const AddReply = () => {
       });
     }
   };
+
+  const onChange = (value: string) => {
+    setReplyFor(value);
+  };
+
   return (
     <div>
+      <ReplySelector onChange={onChange} value={replyFor} />
       <Textarea
         cols={20}
         rows={5}
